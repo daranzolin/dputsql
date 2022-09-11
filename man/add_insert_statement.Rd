@@ -7,7 +7,7 @@
 add_insert_statement(.ddl)
 }
 \arguments{
-\item{x}{An object of class 'ddl'}
+\item{.ddl}{An object of class 'ddl'}
 }
 \description{
 If printed, include an 'INSERT INTO ... VALUES' statement

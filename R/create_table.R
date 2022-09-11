@@ -34,7 +34,7 @@ create_table <- function(x, table_name = NULL, if_not_exists = TRUE) {
 
 #' If printed, include an 'INSERT INTO ... VALUES' statement
 #'
-#' @param x An object of class 'ddl'
+#' @param .ddl An object of class 'ddl'
 #'
 #' @export
 add_insert_statement <- function(.ddl) {
