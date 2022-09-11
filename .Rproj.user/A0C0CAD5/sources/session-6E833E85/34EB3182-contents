@@ -1,0 +1,11 @@
+#' If printed, include an 'INSERT INTO ... VALUES' statement
+#'
+#' @param x An object of class 'ddl'
+#'
+#' @export
+add_insert_statement <- function(.ddl) {
+  stopifnot(
+    "'.ddl' must be of object type 'ddl'" = is_ddl(x)
+  )
+  modifyList(.ddl, list(add_insert = TRUE))
+}

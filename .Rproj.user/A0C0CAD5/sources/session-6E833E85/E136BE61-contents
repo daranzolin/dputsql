@@ -1,0 +1,21 @@
+create_table(mtcars) |> 
+  add_insert_statement()
+
+library(charlatan)
+library(tidyverse)
+df <- ch_generate("name", "job", "phone_number", "currency", "color_name") |>
+  mutate(id = row_number(), .before = 1) |>
+  mutate(varx = sample(1:100, 10))
+
+dputsql(df)
+
+df |> 
+  create_table() |> 
+  primary_key("id") |> 
+  not_null(c("name", "job")) |> 
+  unique_vals(c("phone_number", "job")) |> 
+  default_vals(list(currency = "ENG")) |> 
+  check_vals(list(varx = "varx > 0")) |> 
+  add_insert_statement() |> 
+  ddl_to_clipboard()
+  

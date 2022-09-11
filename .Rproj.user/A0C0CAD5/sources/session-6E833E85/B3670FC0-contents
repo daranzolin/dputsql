@@ -1,0 +1,19 @@
+dputsql <- function(x, engine = c("sqlite", "msserver", "mysql", "oracle")) {
+  stopifnot(
+    "x must be of object type 'data.frame'" = inherits(x, "data.frame")
+  )
+  eng <- match.arg(engine)
+  nm <- deparse(substitute(x))
+  col_types <- sapply(x, class)
+  header <- glue::glue("CREATE TABLE `{nm}`")
+  insert <- glue::glue("INSERT INTO {nm} (`{paste(names(col_types), collapse = '`, `')}`) VALUES")
+  r <- split(x, seq_along(1:nrow(x)))
+  rc <- vector(mode = "list", length = length(r))
+  for (i in seq_along(r)) {
+    rc[[i]] <- paste0("(", paste(r[[i]], collapse = ", "), ")")
+  }
+  rc <- paste(rc, collapse = "\n")
+  glue::glue(
+    "{header}\n{insert}\n{rc}"
+  )
+}

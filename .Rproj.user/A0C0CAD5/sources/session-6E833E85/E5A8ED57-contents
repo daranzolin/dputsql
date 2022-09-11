@@ -1,0 +1,20 @@
+Package: dputsql
+Type: Package
+Title: Create 'DDL' SQL Statements
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "David",
+             family = "Ranzolin",
+             role = c("aut", "cre"),
+             email = "daranzolin@gmail.com"))
+Description: Write 'DDL' SQL statements from data frame objects.
+    Apply various constraints and write output to a file or 
+    your clipboard.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    clipr,
+    glue,
+    usethis
+RoxygenNote: 7.2.1
